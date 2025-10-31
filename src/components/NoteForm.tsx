@@ -75,11 +75,17 @@ export function NoteForm({ onSubmit, isSubmitting }: NoteFormProps): JSX.Element
   };
 
   return (
-    <Paper elevation={3} sx={{ p: 4, maxWidth: 600, mx: 'auto' }}>
-      <Typography variant="h5" component="h1" gutterBottom sx={{ mb: 3 }}>
-        Add Session Note
-      </Typography>
-
+    <Paper 
+      elevation={3} 
+      sx={{ 
+        p: 4, 
+        maxWidth: 700, 
+        mx: 'auto',
+        borderRadius: 3,
+        border: '1px solid',
+        borderColor: 'divider',
+      }}
+    >
       <Box component="form" onSubmit={handleSubmit} noValidate>
         <TextField
           fullWidth
@@ -92,6 +98,11 @@ export function NoteForm({ onSubmit, isSubmitting }: NoteFormProps): JSX.Element
           margin="normal"
           required
           disabled={isSubmitting}
+          sx={{
+            '& .MuiOutlinedInput-root': {
+              fontWeight: 500,
+            },
+          }}
         />
 
         <TextField
@@ -109,6 +120,11 @@ export function NoteForm({ onSubmit, isSubmitting }: NoteFormProps): JSX.Element
           InputLabelProps={{
             shrink: true,
           }}
+          sx={{
+            '& .MuiOutlinedInput-root': {
+              fontWeight: 500,
+            },
+          }}
         />
 
         <TextField
@@ -124,6 +140,11 @@ export function NoteForm({ onSubmit, isSubmitting }: NoteFormProps): JSX.Element
           multiline
           rows={6}
           disabled={isSubmitting}
+          sx={{
+            '& .MuiOutlinedInput-root': {
+              fontWeight: 500,
+            },
+          }}
         />
 
         <TextField
@@ -142,9 +163,14 @@ export function NoteForm({ onSubmit, isSubmitting }: NoteFormProps): JSX.Element
             min: 1,
             max: 300,
           }}
+          sx={{
+            '& .MuiOutlinedInput-root': {
+              fontWeight: 500,
+            },
+          }}
         />
 
-        <Box sx={{ mt: 3, display: 'flex', gap: 2 }}>
+        <Box sx={{ mt: 4, display: 'flex', gap: 2 }}>
           <Button
             type="submit"
             variant="contained"
@@ -152,6 +178,17 @@ export function NoteForm({ onSubmit, isSubmitting }: NoteFormProps): JSX.Element
             fullWidth
             disabled={isSubmitting}
             startIcon={isSubmitting ? <CircularProgress size={20} /> : null}
+            sx={{
+              py: 1.5,
+              fontWeight: 600,
+              fontSize: '1rem',
+              boxShadow: 3,
+              '&:hover': {
+                boxShadow: 5,
+                transform: 'translateY(-2px)',
+              },
+              transition: 'all 0.2s ease-in-out',
+            }}
           >
             {isSubmitting ? 'Saving...' : 'Save Note'}
           </Button>

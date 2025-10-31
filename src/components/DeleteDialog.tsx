@@ -33,16 +33,32 @@ export function DeleteDialog({
       onClose={isDeleting ? undefined : onClose}
       maxWidth="sm"
       fullWidth
+      PaperProps={{
+        sx: {
+          borderRadius: 3,
+          boxShadow: 6,
+        },
+      }}
     >
-      <DialogTitle>Delete Session Note?</DialogTitle>
+      <DialogTitle sx={{ fontWeight: 700, fontSize: '1.25rem' }}>
+        Delete Session Note?
+      </DialogTitle>
       <DialogContent>
-        <DialogContentText>
+        <DialogContentText sx={{ fontSize: '0.95rem' }}>
           Are you sure you want to delete the session note for{' '}
-          <strong>{clientName}</strong>? This action cannot be undone.
+          <strong style={{ color: '#1e293b' }}>{clientName}</strong>? This action cannot be undone.
         </DialogContentText>
       </DialogContent>
-      <DialogActions sx={{ px: 3, pb: 2 }}>
-        <Button onClick={onClose} disabled={isDeleting}>
+      <DialogActions sx={{ px: 3, pb: 3, pt: 2, gap: 1 }}>
+        <Button 
+          onClick={onClose} 
+          disabled={isDeleting}
+          variant="outlined"
+          sx={{ 
+            fontWeight: 600,
+            px: 3,
+          }}
+        >
           Cancel
         </Button>
         <Button
@@ -51,6 +67,14 @@ export function DeleteDialog({
           variant="contained"
           disabled={isDeleting}
           startIcon={isDeleting ? <CircularProgress size={20} /> : null}
+          sx={{
+            fontWeight: 600,
+            px: 3,
+            boxShadow: 2,
+            '&:hover': {
+              boxShadow: 3,
+            },
+          }}
         >
           {isDeleting ? 'Deleting...' : 'Delete'}
         </Button>

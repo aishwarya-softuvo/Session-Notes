@@ -1,14 +1,12 @@
 import { useState } from 'react';
-import { useNavigate, Link as RouterLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
   Container,
   Box,
-  Button,
   Snackbar,
   Alert,
   Typography,
 } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { NoteForm } from '../components/NoteForm';
 import { useSessionNotes } from '../hooks/useSessionNotes';
 import { validateSessionNote } from '../supabase/validateSessionNote';
@@ -82,18 +80,22 @@ export function AddNote(): JSX.Element {
   };
 
   return (
-    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-      <Box sx={{ mb: 3 }}>
-        <Button
-          component={RouterLink}
-          to="/"
-          startIcon={<ArrowBackIcon />}
-          sx={{ mb: 2 }}
+    <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Box sx={{ mb: 4 }}>
+        <Typography 
+          variant="h4" 
+          component="h1"
+          sx={{ 
+            fontWeight: 700,
+            background: 'linear-gradient(135deg, #2563eb 0%, #7c3aed 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+          }}
         >
-          Back to Notes
-        </Button>
-        <Typography variant="h4" component="h1" fontWeight="bold">
           Add New Session Note
+        </Typography>
+        <Typography variant="body2" color="text.secondary" sx={{ mt: 1, fontWeight: 500 }}>
+          Fill in the details of your therapy session
         </Typography>
       </Box>
 
@@ -103,13 +105,22 @@ export function AddNote(): JSX.Element {
         open={snackbar.open}
         autoHideDuration={6000}
         onClose={handleSnackbarClose}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        sx={{ mt: 2 }}
       >
         <Alert
           onClose={handleSnackbarClose}
           severity={snackbar.severity}
           variant="filled"
-          sx={{ width: '100%' }}
+          sx={{
+            width: '100%',
+            minWidth: '300px',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+            '& .MuiAlert-icon': {
+              fontSize: '24px',
+            },
+          }}
+          elevation={6}
         >
           {snackbar.message}
         </Alert>

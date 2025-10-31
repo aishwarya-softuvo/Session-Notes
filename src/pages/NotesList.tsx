@@ -75,31 +75,77 @@ export function NotesList(): JSX.Element {
 
   if (loading) {
     return (
-      <Container maxWidth="lg" sx={{ mt: 4, display: 'flex', justifyContent: 'center' }}>
-        <CircularProgress size={60} />
-      </Container>
+      <Box
+        sx={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: 'background.default',
+          zIndex: 9999,
+        }}
+      >
+        <CircularProgress size={60} thickness={4} />
+      </Box>
     );
   }
 
   return (
-    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4 }}>
-        <Typography variant="h4" component="h1" fontWeight="bold">
-          Session Notes
-        </Typography>
+    <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 5 }}>
+        <Box>
+          <Typography 
+            variant="h4" 
+            component="h1" 
+            sx={{ 
+              fontWeight: 700,
+              background: 'linear-gradient(135deg, #2563eb 0%, #7c3aed 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              mb: 0.5,
+            }}
+          >
+            Session Notes
+          </Typography>
+          <Typography variant="body2" color="text.secondary" sx={{ fontWeight: 500 }}>
+            Manage your therapy session notes
+          </Typography>
+        </Box>
         <Button
           component={RouterLink}
           to="/new"
           variant="contained"
           size="large"
           startIcon={<AddIcon />}
+          sx={{
+            px: 3,
+            py: 1.5,
+            fontWeight: 600,
+            boxShadow: 3,
+            '&:hover': {
+              boxShadow: 5,
+              transform: 'translateY(-2px)',
+            },
+            transition: 'all 0.2s ease-in-out',
+          }}
         >
           Add Note
         </Button>
       </Box>
 
       {error && (
-        <Alert severity="error" sx={{ mb: 3 }}>
+        <Alert 
+          severity="error" 
+          sx={{ 
+            mb: 3,
+            borderRadius: 2,
+            boxShadow: 2,
+          }}
+        >
           {error}
         </Alert>
       )}
@@ -108,15 +154,33 @@ export function NotesList(): JSX.Element {
         <Box
           sx={{
             textAlign: 'center',
-            py: 8,
-            px: 2,
+            py: 10,
+            px: 3,
+            backgroundColor: 'background.paper',
+            borderRadius: 3,
+            border: '2px dashed',
+            borderColor: 'divider',
           }}
         >
-          <Typography variant="h6" color="text.secondary" gutterBottom>
+          <Typography 
+            variant="h5" 
+            sx={{ 
+              fontWeight: 700,
+              color: 'text.primary',
+              mb: 1,
+            }}
+          >
             No session notes yet
           </Typography>
-          <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
-            Start by adding your first session note
+          <Typography 
+            variant="body1" 
+            color="text.secondary" 
+            sx={{ 
+              mb: 4,
+              fontSize: '0.95rem',
+            }}
+          >
+            Start by adding your first session note to track therapy sessions
           </Typography>
           <Button
             component={RouterLink}
@@ -124,6 +188,17 @@ export function NotesList(): JSX.Element {
             variant="contained"
             size="large"
             startIcon={<AddIcon />}
+            sx={{
+              px: 4,
+              py: 1.5,
+              fontWeight: 600,
+              boxShadow: 3,
+              '&:hover': {
+                boxShadow: 5,
+                transform: 'translateY(-2px)',
+              },
+              transition: 'all 0.2s ease-in-out',
+            }}
           >
             Add Your First Note
           </Button>
@@ -152,13 +227,22 @@ export function NotesList(): JSX.Element {
         open={snackbar.open}
         autoHideDuration={4000}
         onClose={handleSnackbarClose}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        sx={{ mt: 2 }}
       >
         <Alert
           onClose={handleSnackbarClose}
           severity={snackbar.severity}
           variant="filled"
-          sx={{ width: '100%' }}
+          sx={{
+            width: '100%',
+            minWidth: '300px',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+            '& .MuiAlert-icon': {
+              fontSize: '24px',
+            },
+          }}
+          elevation={6}
         >
           {snackbar.message}
         </Alert>
