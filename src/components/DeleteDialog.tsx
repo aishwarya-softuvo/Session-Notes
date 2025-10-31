@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Dialog,
   DialogTitle,
@@ -22,7 +23,7 @@ export function DeleteDialog({
   onConfirm,
   clientName,
   isDeleting,
-}: DeleteDialogProps): JSX.Element {
+}: DeleteDialogProps): React.JSX.Element {
   const handleConfirm = async (): Promise<void> => {
     await onConfirm();
   };

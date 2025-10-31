@@ -1,7 +1,8 @@
+import React from 'react';
 import { Box, Container, Typography, Link } from '@mui/material';
 import BusinessIcon from '@mui/icons-material/Business';
 
-export function Footer(): JSX.Element {
+export function Footer(): React.JSX.Element {
   const currentYear = new Date().getFullYear();
 
   return (

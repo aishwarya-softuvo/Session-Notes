@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Card,
   CardContent,
@@ -15,7 +16,7 @@ interface NoteCardProps {
   onDelete: (id: string) => void;
 }
 
-export function NoteCard({ note, onDelete }: NoteCardProps): JSX.Element {
+export function NoteCard({ note, onDelete }: NoteCardProps): React.JSX.Element {
   const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', {

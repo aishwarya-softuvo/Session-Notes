@@ -1,4 +1,4 @@
-import { useState, FormEvent, ChangeEvent } from 'react';
+import React, { useState, FormEvent, ChangeEvent } from 'react';
 import {
   Box,
   TextField,
@@ -14,7 +14,7 @@ interface NoteFormProps {
   isSubmitting: boolean;
 }
 
-export function NoteForm({ onSubmit, isSubmitting }: NoteFormProps): JSX.Element {
+export function NoteForm({ onSubmit, isSubmitting }: NoteFormProps): React.JSX.Element {
   const [formData, setFormData] = useState<SessionNoteInput>({
     client_name: '',
     session_date: new Date().toISOString().split('T')[0],

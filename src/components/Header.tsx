@@ -1,8 +1,9 @@
+import React from 'react';
 import { AppBar, Toolbar, Typography, Container, Box } from '@mui/material';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import ArticleIcon from '@mui/icons-material/Article';
 
-export function Header(): JSX.Element {
+export function Header(): React.JSX.Element {
   const location = useLocation();
 
   return (

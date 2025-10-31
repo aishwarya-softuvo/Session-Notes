@@ -1,3 +1,4 @@
+import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
 import { NotesList } from './pages/NotesList';
@@ -90,7 +91,7 @@ const theme = createTheme({
   ],
 });
 
-function App(): JSX.Element {
+function App(): React.JSX.Element {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />

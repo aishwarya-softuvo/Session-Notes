@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import {
   Container,
@@ -16,7 +16,7 @@ import { NoteCard } from '../components/NoteCard';
 import { DeleteDialog } from '../components/DeleteDialog';
 import { SessionNote } from '../types/sessionNote';
 
-export function NotesList(): JSX.Element {
+export function NotesList(): React.JSX.Element {
   const { notes, loading, error, deleteNote } = useSessionNotes();
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [noteToDelete, setNoteToDelete] = useState<SessionNote | null>(null);

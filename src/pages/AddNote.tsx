@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Container,
@@ -12,7 +12,7 @@ import { useSessionNotes } from '../hooks/useSessionNotes';
 import { validateSessionNote } from '../supabase/validateSessionNote';
 import { SessionNoteInput } from '../types/sessionNote';
 
-export function AddNote(): JSX.Element {
+export function AddNote(): React.JSX.Element {
   const navigate = useNavigate();
   const { addNote } = useSessionNotes();
   const [isSubmitting, setIsSubmitting] = useState(false);
